@@ -1,5 +1,22 @@
 ---
-title: "About"
+title: "About Me"
 ---
 
-About this site
+# About Me
+
+## Background
+I am an Environmental Studies student at UCSB. I come from a very small rural town in Northern California called Coloma, CA. I am a first generation college student. 
+
+## Interests
+- Ecology
+- Climate change
+- Data science
+
+## Personal Life
+
+![](img1.jpg)
+![](img2.jpg)
+![](img3.jpg)
+
+I enjoy hiking, being outdoors, and spending my time between the mountains and the ocean.
+I paint, draw, and craft florals, landscapes, and marine themed pieces. 

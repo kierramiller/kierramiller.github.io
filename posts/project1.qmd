@@ -1,0 +1,12 @@
+---
+title: "Environmental Data Analysis"
+---
+
+## Overview
+This project explores environmental data using R.
+
+## Code
+
+```{r}
+summary(cars)
+plot(cars)

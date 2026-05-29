@@ -1,7 +1,11 @@
 ---
-title: "ENVS-193DS_Homework-03"
+title: "Home"
 ---
 
-This is a Quarto website.
+# Hi, I'm Kierra Miller
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+![](photo.jpg)
+
+I am an Environmental Studies student at UC Santa Barbara interested in ecology, conservation, and data science. I am passionate about studying our ocean's and marine ecology. I am an avid scuba diver, hiking enthusiast and painter. 
+
+This website highlights my academic work, projects, and personal interests.

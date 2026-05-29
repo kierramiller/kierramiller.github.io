@@ -12,3 +12,102 @@ format: html
 
 
 # Dive Site Interactive Map 
+
+```{r}
+## Dive Sites Map
+
+#| echo: false
+# loading plotly for interactive plots
+library(plotly)  
+
+# Create dataset manually from your dive log
+dives <- data.frame(
+  dive_num = 1:13,  # dive numbers
+  
+  site = c(
+    "Goldfish Bowl","Amphitheater","Scorpion Rock","Leadbetter",
+    "Cat Rock","Harbor Cove","Underwater Island",
+    "Big Rock","Goldfish Bowl","Goldfish Bowl",
+    "Lips","Lips","Fry Harbor"
+  ),  # dive site names
+  
+  location = c(
+    "N. Anacapa","S. Anacapa","Santa Cruz","Santa Barbara",
+    "S. Anacapa","S. Anacapa","S. Anacapa",
+    "Santa Cruz","N. Anacapa","N. Anacapa",
+    "Santa Cruz","Santa Cruz","Santa Cruz"
+  ),  # general location
+  
+  lat = c(
+    34.015,34.015,34.040,34.420,
+    34.015,34.015,34.015,
+    34.040,34.015,34.015,
+    34.040,34.040,34.040
+  ),  # latitude coordinates
+  
+  lon = c(
+    -119.37,-119.37,-119.70,-119.70,
+    -119.37,-119.37,-119.37,
+    -119.70,-119.37,-119.37,
+    -119.70,-119.70,-119.70
+  ),  # longitude coordinates
+  
+  depth = c(38,40,44,15,40,40,50,40,44,35,32,32,60),  # max depth
+  
+  date = c(
+    "11/23/25","11/23/25","11/23/25","11/24/25",
+    "01/31/26","01/31/26","01/31/26",
+    "02/14/26","02/14/26","02/14/26",
+    "03/07/26","03/07/26","03/07/26"
+  ),  # dive dates
+  
+  notes = c(
+    "slightly cold","slightly cold","","cold surface",
+    "need navigation practice","felt comfortable","strong current",
+    "heavy current","current decent viz","current decent viz",
+    "good visibility","good visibility","low visibility"
+  )  # notes for each dive
+)
+
+# Create island grouping for color coding
+dives$island <- ifelse(grepl("Anacapa", dives$location), "Anacapa",
+                 ifelse(grepl("Santa Cruz", dives$location), "Santa Cruz",
+                 ifelse(grepl("Catalina", dives$location), "Catalina", "Mainland")))
+
+# Build interactive map
+fig <- plot_ly(
+  dives,
+  x = ~lon,  # longitude on x-axis
+  y = ~lat,  # latitude on y-axis
+  type = "scatter",  # scatter plot
+  mode = "markers+text",  # show points + labels
+  color = ~island,  # color by island
+  text = ~paste("Dive", dive_num),  # label each point
+  hoverinfo = "text",  # show custom hover info
+  hovertext = ~paste0(
+    "<b>Dive #:</b> ", dive_num,
+    "<br><b>Site:</b> ", site,
+    "<br><b>Location:</b> ", location,
+    "<br><b>Depth:</b> ", depth, " ft",
+    "<br><b>Date:</b> ", date,
+    "<br><b>Notes:</b> ", notes
+  ),
+  marker = list(size = 10)  # marker size
+)
+
+# Add title + annotations
+fig <- fig %>%
+  layout(
+    title = "Dive Log Map (Channel Islands & Santa Barbara)",
+    xaxis = list(title = "Longitude"),
+    yaxis = list(title = "Latitude"),
+    annotations = list(
+      list(x = -119.37, y = 34.06, text = "Anacapa Island", showarrow = FALSE),
+      list(x = -119.70, y = 34.10, text = "Santa Cruz Island", showarrow = FALSE),
+      list(x = -118.48, y = 33.48, text = "Catalina Island", showarrow = FALSE)
+    )
+  )
+
+fig  # THIS LINE IS CRITICAL — renders the plot
+```
+

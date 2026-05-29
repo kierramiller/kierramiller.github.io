@@ -1,16 +1,79 @@
 [
   {
+    "objectID": "fun.html",
+    "href": "fun.html",
+    "title": "Scuba Diving",
+    "section": "",
+    "text": "Scuba Diving Photography\n\n\nDiving Certifications\n\n\nDive Site Interactive Map\n\n## Dive Sites Map\n\n#| echo: false\n# loading plotly for interactive plots\nlibrary(plotly)  \n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n# Create dataset manually from your dive log\ndives &lt;- data.frame(\n  dive_num = 1:13,  # dive numbers\n  \n  site = c(\n    \"Goldfish Bowl\",\"Amphitheater\",\"Scorpion Rock\",\"Leadbetter\",\n    \"Cat Rock\",\"Harbor Cove\",\"Underwater Island\",\n    \"Big Rock\",\"Goldfish Bowl\",\"Goldfish Bowl\",\n    \"Lips\",\"Lips\",\"Fry Harbor\"\n  ),  # dive site names\n  \n  location = c(\n    \"N. Anacapa\",\"S. Anacapa\",\"Santa Cruz\",\"Santa Barbara\",\n    \"S. Anacapa\",\"S. Anacapa\",\"S. Anacapa\",\n    \"Santa Cruz\",\"N. Anacapa\",\"N. Anacapa\",\n    \"Santa Cruz\",\"Santa Cruz\",\"Santa Cruz\"\n  ),  # general location\n  \n  lat = c(\n    34.015,34.015,34.040,34.420,\n    34.015,34.015,34.015,\n    34.040,34.015,34.015,\n    34.040,34.040,34.040\n  ),  # latitude coordinates\n  \n  lon = c(\n    -119.37,-119.37,-119.70,-119.70,\n    -119.37,-119.37,-119.37,\n    -119.70,-119.37,-119.37,\n    -119.70,-119.70,-119.70\n  ),  # longitude coordinates\n  \n  depth = c(38,40,44,15,40,40,50,40,44,35,32,32,60),  # max depth\n  \n  date = c(\n    \"11/23/25\",\"11/23/25\",\"11/23/25\",\"11/24/25\",\n    \"01/31/26\",\"01/31/26\",\"01/31/26\",\n    \"02/14/26\",\"02/14/26\",\"02/14/26\",\n    \"03/07/26\",\"03/07/26\",\"03/07/26\"\n  ),  # dive dates\n  \n  notes = c(\n    \"slightly cold\",\"slightly cold\",\"\",\"cold surface\",\n    \"need navigation practice\",\"felt comfortable\",\"strong current\",\n    \"heavy current\",\"current decent viz\",\"current decent viz\",\n    \"good visibility\",\"good visibility\",\"low visibility\"\n  )  # notes for each dive\n)\n\n# Create island grouping for color coding\ndives$island &lt;- ifelse(grepl(\"Anacapa\", dives$location), \"Anacapa\",\n                 ifelse(grepl(\"Santa Cruz\", dives$location), \"Santa Cruz\",\n                 ifelse(grepl(\"Catalina\", dives$location), \"Catalina\", \"Mainland\")))\n\n# Build interactive map\nfig &lt;- plot_ly(\n  dives,\n  x = ~lon,  # longitude on x-axis\n  y = ~lat,  # latitude on y-axis\n  type = \"scatter\",  # scatter plot\n  mode = \"markers+text\",  # show points + labels\n  color = ~island,  # color by island\n  text = ~paste(\"Dive\", dive_num),  # label each point\n  hoverinfo = \"text\",  # show custom hover info\n  hovertext = ~paste0(\n    \"&lt;b&gt;Dive #:&lt;/b&gt; \", dive_num,\n    \"&lt;br&gt;&lt;b&gt;Site:&lt;/b&gt; \", site,\n    \"&lt;br&gt;&lt;b&gt;Location:&lt;/b&gt; \", location,\n    \"&lt;br&gt;&lt;b&gt;Depth:&lt;/b&gt; \", depth, \" ft\",\n    \"&lt;br&gt;&lt;b&gt;Date:&lt;/b&gt; \", date,\n    \"&lt;br&gt;&lt;b&gt;Notes:&lt;/b&gt; \", notes\n  ),\n  marker = list(size = 10)  # marker size\n)\n\n# Add title + annotations\nfig &lt;- fig %&gt;%\n  layout(\n    title = \"Dive Log Map (Channel Islands & Santa Barbara)\",\n    xaxis = list(title = \"Longitude\"),\n    yaxis = list(title = \"Latitude\"),\n    annotations = list(\n      list(x = -119.37, y = 34.06, text = \"Anacapa Island\", showarrow = FALSE),\n      list(x = -119.70, y = 34.10, text = \"Santa Cruz Island\", showarrow = FALSE),\n      list(x = -118.48, y = 33.48, text = \"Catalina Island\", showarrow = FALSE)\n    )\n  )\n\nfig  # THIS LINE IS CRITICAL — renders the plot"
+  },
+  {
+    "objectID": "posts/project1.html",
+    "href": "posts/project1.html",
+    "title": "Environmental Data Analysis",
+    "section": "",
+    "text": "This project explores environmental data using R."
+  },
+  {
+    "objectID": "posts/project1.html#overview",
+    "href": "posts/project1.html#overview",
+    "title": "Environmental Data Analysis",
+    "section": "",
+    "text": "This project explores environmental data using R."
+  },
+  {
+    "objectID": "posts/project1.html#code",
+    "href": "posts/project1.html#code",
+    "title": "Environmental Data Analysis",
+    "section": "Code",
+    "text": "Code\nsummary(cars) plot(cars)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "ENVS-193DS_Homework-03",
+    "title": "Home",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Hi, I’m Kierra Miller\n\nI am an Environmental Studies student at UC Santa Barbara interested in ecology, conservation, and data science. I am passionate about studying our ocean’s and marine ecology. I am an avid scuba diver, hiking enthusiast and painter.\nThis website highlights my academic work, projects, and personal interests."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About Me",
     "section": "",
-    "text": "About this site"
+    "text": "I am an Environmental Studies student at UCSB. I come from a very small rural town in Northern California called Coloma, CA. I am a first generation college student.\n\n\n\n\nEcology\nClimate change\nData science\n\n\n\n\n  \nI enjoy hiking, being outdoors, and spending my time between the mountains and the ocean. I paint, draw, and craft florals, landscapes, and marine themed pieces."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "",
+    "text": "I am an Environmental Studies student at UCSB. I come from a very small rural town in Northern California called Coloma, CA. I am a first generation college student."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About Me",
+    "section": "",
+    "text": "Ecology\nClimate change\nData science"
+  },
+  {
+    "objectID": "about.html#personal-life",
+    "href": "about.html#personal-life",
+    "title": "About Me",
+    "section": "",
+    "text": "I enjoy hiking, being outdoors, and spending my time between the mountains and the ocean. I paint, draw, and craft florals, landscapes, and marine themed pieces."
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Resume\n\n\nWriting Samples"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "My Projects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnvironmental Data Analysis\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

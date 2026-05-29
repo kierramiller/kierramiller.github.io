@@ -1,0 +1,9 @@
+---
+title: "Projects"
+listing:
+  contents: posts
+  type: default
+---
+
+# My Projects
+

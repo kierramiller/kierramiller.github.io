@@ -1,22 +1,19 @@
 project:
   type: website
   output-dir: docs
-  
+
 website:
-  title: "ENVS-193DS_Homework-03"
+  title: "Kierra Miller | Environmental Studies Portfolio"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - projects.qmd
+      - fun.qmd
+      - resume.qmd
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
-    toc: true
-
-
-
